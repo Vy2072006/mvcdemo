@@ -32,6 +32,15 @@ class CartController
             header('Location:'. $baseURL.'/home/index');
             exit;
         }
+
     }
+
+    public function index()
+    {
+        include './App/Views/Cart/index.php';
+    }
+
+
+
     
 }
