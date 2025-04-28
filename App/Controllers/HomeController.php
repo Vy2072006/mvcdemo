@@ -5,5 +5,4 @@ class HomeController
     {
         include __DIR__ . '/../Views/Home/index.php';
     }
-    
 }

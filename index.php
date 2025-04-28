@@ -1,18 +1,18 @@
-<<<<<<< HEAD
     <?php
     require_once "App/Controllers/ProductController.php";
     require_once "App/Controllers/UserController.php";
     require_once "App/Controllers/HomeController.php";
     require_once "App/Controllers/CartController.php";
+    require_once "App/Controllers/OrderController.php";
 
     $url = $_GET['url'];
     $urlArr = explode('/', $url);
     // var_dump($urlArr);
     // die;
     // echo $url;
-    $controlerClassName = $urlArr[0] . "Controller";
+    $controllerClassName = $urlArr[0] . "Controller";
 
-    $controller = new $controlerClassName();
+    $controller = new $controllerClassName();
     call_user_func([$controller, $urlArr[1]]);
 
 
