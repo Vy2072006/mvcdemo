@@ -21,5 +21,6 @@ class OrderController
         // 4. Xoa gio hang
         include __DIR__ . '/../Views/Order/checkout.php';
     }
+    
    
 }
