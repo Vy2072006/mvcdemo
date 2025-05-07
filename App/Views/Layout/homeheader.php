@@ -41,7 +41,8 @@ if (session_status() === PHP_SESSION_NONE) {
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
                             </ul>
-                        </li>                    
+                        </li> 
+                                          
                     </ul>
                     <!-- Dời phần Profile ra ngoài ul này -->
                     <div class="d-flex align-items-center">
@@ -54,7 +55,7 @@ if (session_status() === PHP_SESSION_NONE) {
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdownProfile">
                                     <li><a class="dropdown-item" href="#!"><?= $_SESSION['username'] ?></a></li>
-                                    <li><a class="dropdown-item" href="#!">Lịch sử đơn hàng</a></li>
+                                    <li><a class="dropdown-item" href="<?=$baseURL?>order/history">Lịch sử đơn hàng</a></li>
                                     <li><hr class="dropdown-divider" /></li>
                                     <li><a class="dropdown-item" href="<?=$baseURL?>user/logout">Logout</a></li>
                                 </ul>

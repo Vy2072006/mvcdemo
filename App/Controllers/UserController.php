@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../Model/UserModel.php';
-require_once  __DIR__.'/../../Core/PHPMailer/Mailer.php';
+require_once  __DIR__ . '/../../Core/PHPMailer/Mailer.php';
 class UserController
 {
     public function index()
@@ -9,14 +9,13 @@ class UserController
     }
     public function register()
     {
-       
-        if (session_status() === PHP_SESSION_NONE)
-        {
+
+        if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
 
         $error = '';
-        
+
         $config = require './config.php';
         $baseURL = $config['baseURL'];
 
@@ -28,31 +27,29 @@ class UserController
 
             $userModel = new UserModel();
             $userId = $userModel->createUser($fullname, $username, $password);
-            
+
             $_SESSION['user_id'] = $userId;
             $_SESSION['username'] = $username;
 
-            header("Location: " . $baseURL. 'home/index');
-             exit;
-
+            header("Location: " . $baseURL . 'home/index');
+            exit;
         }
-       include './App/Views/User/register.php';
+        include './App/Views/User/register.php';
     }
     public function logout()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        unset(  $_SESSION['user_id']);
-        unset(  $_SESSION['username']);
+        unset($_SESSION['user_id']);
+        unset($_SESSION['username']);
         $config = require 'config.php';
-        
+
         $baseURL = $config['baseURL'];
-        header("Location: " . $baseURL.'home/index'); // về trang chủ
+        header("Location: " . $baseURL . 'home/index'); // về trang chủ
         exit;
-     
     }
-     public function login()
+    public function login()
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
@@ -77,9 +74,9 @@ class UserController
                 // var_dump( $_SESSION['username'] );
                 // die;
                 $config = require 'config.php';
-            
+
                 $baseURL = $config['baseURL'];
-                header("Location: " . $baseURL.'home/index'); // về trang chủ
+                header("Location: " . $baseURL . 'home/index'); // về trang chủ
                 exit;
             } else {
                 $error = "Tên đăng nhập hoặc mật khẩu không đúng.";
@@ -99,7 +96,7 @@ class UserController
             $adminEmail = "van.tranhuuquoc@umt.edu.vn"; // Email admin
             $emailSubject = "Liên hệ từ $userEmail";
             // $emailSubject = "=?UTF-8?B?" . base64_encode("Liên hệ từ $userEmail") . "?=";
-            
+
             // Nội dung email đẹp
             $emailBody = "<h3>Thông tin liên hệ</h3>
                           <p><strong>Tên:</strong> $userName</p>
@@ -112,13 +109,12 @@ class UserController
             } else {
                 $_SESSION['contact_error'] = "Gửi email thất bại. Vui lòng thử lại!";
             }
-            $config = require 'config.php';        
+            $config = require 'config.php';
             $baseURL = $config['baseURL'];
-            header("Location: " . $baseURL .'user/contact');
+            header("Location: " . $baseURL . 'user/contact');
             exit();
         }
-        
-        include './App/Views/User/contact.php';
-    }    
 
+        include './App/Views/User/contact.php';
+    }
 }
